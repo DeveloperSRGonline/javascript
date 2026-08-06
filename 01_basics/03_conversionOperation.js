@@ -18,7 +18,7 @@ let score = "33";
 let value = "adfadf";
 let isBooleanValue = Boolean(value)
 // console.log(typeof isBooleanValue) - boolean
-console.log(isBooleanValue)// - true
+// console.log(isBooleanValue)// - true
 
 // 1 - true
 // 0 - false
@@ -27,4 +27,41 @@ console.log(isBooleanValue)// - true
 
 let someValue = 33
 let someString = String(someValue)
-console.log(someString)
+// console.log(someString)
+
+
+// *****************Operations**********************
+// console.log(2+2)
+// console.log(2-2)
+// console.log(2/2)
+// console.log(2*2)
+// console.log(2**3) - basic maths operations
+
+
+let str1 = "Hello "
+let str2 = "Javascript"
+let str3 = str1 + str2
+// console.log(str3)
+
+// console.log("1" + 2)
+// console.log(1 + "2")
+// console.log("1" + 2 + 2)
+// console.log(1 + 2 + "2") - in real life its not accepatable by anyone
+
+// ************special type of conversion***************
+
+// console.log(true)
+// console.log(+true)
+// console.log(+"")
+// console.log(++true) - not valid
+// console.log(true++) - not valid
+
+// let num1,num2,num3
+
+// num = num = num = 2 + 2
+// - readablilty is must
+
+let gameCounter = 100;
+gameCounter++;// postfix first use then increase
+++gameCounter;// prefix - first increast then use
+// console.log(gameCounter);

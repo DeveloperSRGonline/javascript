@@ -1,29 +1,12 @@
-// console.log("S");
-// console.log("H");
-// console.log("I");
-// console.log("V");
-// console.log("A");
-// console.log("M");
 
 
-function sayMyName(){
-    console.log("S");
-    console.log("H");
-    console.log("I");
-    console.log("V");
-    console.log("A");
-    console.log("M");
+function addTwoNumbers(number1, number2){
+    // let result = number1 + number2;
+    // return result;
+    // console.log("Hello js") - this will give unreachable code error
+    return (number1 + number2);
 }
 
-// sayMyName()
+const answer = addTwoNumbers(4,5)
 
-function addTwoNumbers(number1, number2 /*this is called parameters */){
-    console.log(number1 + number2); // console karne ka matlab ye nahi ki vo value return bhi ho rahi hai jaha function call huva hai
-}
-
-const result = addTwoNumbers(4,5 /*this is called arguments */)
-addTwoNumbers("4",5)
-addTwoNumbers("4","5")
-addTwoNumbers(4,null)
-
-console.log(result)// undefined kyo?
+console.log(answer)

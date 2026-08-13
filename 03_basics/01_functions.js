@@ -1,12 +1,16 @@
+function loginUserMessage(username = "Shivam" /*this is a default parameter because if no value provided to the username by default shivam will be pass */){
+    // if(username === undefined){ // this will run when condition is true
+    //     return `Please enter a username`
+    // }
 
-
-function addTwoNumbers(number1, number2){
-    // let result = number1 + number2;
-    // return result;
-    // console.log("Hello js") - this will give unreachable code error
-    return (number1 + number2);
+    // one more way 
+    if(!username){ 
+        return "Please enter the username"
+    }
+    return `${username}, Welcome to the world of JavaScript` // this is called string interpolation or template literals
 }
 
-const answer = addTwoNumbers(4,5)
-
-console.log(answer)
+// console.log(loginUserMessage("Antigravity"))
+// console.log(loginUserMessage(""))
+// console.log(loginUserMessage()) this will give undefined
+console.log(loginUserMessage()) // if you want to avoid this type of situation so you can use default parameter

@@ -1,37 +1,40 @@
-// let a = 10;
-// const b = 20;
-// var c = 30; // jab ye tha toh let and const ki jarurat hi kyo padi ?
+function one(){
+    const username = "Shivam"
 
-{
-    // this curly braces ko hi bolte hai scope
-} // objects mein bhi curly braces hote hai ye different hai  vo object declaration hai - baki jagah jo use ho raha hai vaha ye kehlata hai us ka scope
+    function two(){
+        const website = "Youtube"
+        console.log(username)
+    }
 
-// console.log(a);
-// console.log(b);
-// console.log(c);
-var c = 300;
-// lete hai ye kisi ek developer ne ye value declare ki thi
-
-let a = 300
-
-if (true) {
-    let a = 10;
-    const b = 20;
-    var c = 30;
-    console.log("Inner a: ",a)
+    // console.log(website) // iska scope toh two function tak hi tha
+    two()
 }
-// aur ye maan lete hai ki ye kisi dusre developer ne kisi dusri file mein ye kiya 
-console.log("Outer a: ",a)
-// console.log(a); /*ReferenceError: a is not defined - jo ki achhi baat hai ye hona hi chahiye*/
-// console.log(b); /*ReferenceError: b is not defined - jo ki achhi baat hai ye hona hi chahiye - kyo ki b ka kaam if block ke andar hi khatam hai*/
-console.log(c); // ye hai sabse badi problem 
 
-// if ke andar ka hai block scope
+one()
 
-// for (let index = 0; index < array.length; index++) {
-//     const element = array[index];
-    
-// }
+// har bar ek function ke liye seperate ek scope banege
+
+if(true){
+    const username = "Shivam"
+    if(username === "Shivam"){
+        const website = " Youtube"
+        // console.log(`${username} ${website}`)
+    }
+    // console.log(website) - this and
+}
+
+// console.log(username) - this will give it is not defined as its scope is only inside the if block
 
 
-// core and node mein scope alag hota hai.
+// ************ Instresting ************************
+
+console.log(addOne(5));
+function addOne(num){
+    return num + 1;
+}
+
+
+console.log(addTwo(5)); // hoisting concept is theref
+const addTwo = function(num){ // ye bhi function hi hai but isko kabhi kabhi expression bhi bola jata hai
+    return num + 2;
+}

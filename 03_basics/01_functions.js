@@ -1,16 +1,35 @@
-function loginUserMessage(username = "Shivam" /*this is a default parameter because if no value provided to the username by default shivam will be pass */){
-    // if(username === undefined){ // this will run when condition is true
-    //     return `Please enter a username`
-    // }
+// the ... is called rest and spread too but on basis of use cases and place where it is used
 
-    // one more way 
-    if(!username){ 
-        return "Please enter the username"
-    }
-    return `${username}, Welcome to the world of JavaScript` // this is called string interpolation or template literals
+function calculateCartPrice(val1,val2,...num1 /* in this case its rest operator */){
+    return num1
 }
 
-// console.log(loginUserMessage("Antigravity"))
-// console.log(loginUserMessage(""))
-// console.log(loginUserMessage()) this will give undefined
-console.log(loginUserMessage()) // if you want to avoid this type of situation so you can use default parameter
+// console.log(calculateCartPrice(200,400,500,2000,4000))
+
+
+// handling object in function
+
+const user = {
+    username:"Shivam",
+    prices:199 // in case aisa kuch huva toh chije problem karege in chijo ke liye hi log typescript likhna pasand karte hai - jiske vajah se type checking ho jaye
+}
+
+function handleObject(anyObject){
+    console.log(`Username is ${anyObject.username} and price is ${anyObject.price}`)
+}
+
+handleObject({
+    username:"hitesh",
+    price:2999
+})
+
+
+// handling array in function
+const myNewArray = [134,256,767,123]
+
+function returnSecondValue(getArray){
+    return getArray[1]
+}
+
+console.log(returnSecondValue(myNewArray));
+console.log(returnSecondValue([2,4,6,8,10]));

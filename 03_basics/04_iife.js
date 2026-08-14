@@ -9,7 +9,7 @@
 (function chai(){
     // named iife
     console.log(`DB Connected using IIFE`)
-})(); // -> ye semin color jaruri hai jab do iife ek saath jab likhna ho
+})(); // -> ye semin color jaruri hai jab do iife ek saath jab likhna
 
 // arrow function example
 

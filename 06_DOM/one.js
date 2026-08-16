@@ -1,0 +1,5 @@
+
+/*
+>console.log(document.links)
+VM1422:1 HTMLCollection(755) [a.mw-jump-link, a, a, a, a, a, a, a, a, a, a, a, a, a.mw-logo, a.cdx-button.cdx-button--fake-button.cdx-button--fake-button--enabled.cdx-button--weight-quiet.cdx-…, a, a, a, a, a, a, a.vector-toc-link, a.vector-toc-link, a.vector-toc-link, a.vector-toc-link, a.vector-toc-link, a.vector-toc-link, a.vector-toc-link, a.vector-toc-link, a.vector-toc-link, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target, a.interlanguage-link-target] - ye html collection hai, array nahi hai
+ */

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom | Wrap</title>
+    <style>
+        * {
+            background-color: #212121;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <ul class="language">
+        <li>Javascript</li>
+    </ul>
+</body>
+<script>
+    /* process
+    first create list element
+    select the ul
+    append it in ul*/
+    // function addLanguage(langName) {
+    //     const li = document.createElement('li')
+    //     li.innerHTML = `${langName}`
+    //     document.querySelector('.language').appendChild(li) // ek problem hai jab bhi append karte hai usko pura tree traverse karna padta hai abi toh ekk hi element that but 1000 hota toh bohot time lagta , 100000 toh aur problem ... - exact yahi approch but little optimized way
+    // }
+
+    // addLanguage("Python")
+    // addLanguage("Java")
+    // addLanguage("C")
+
+    function addOptimizedLanuage(langName){ // for big project
+        const li = document.createElement('li')
+        li.appendChild(document.createTextNode(langName)) // just kuchh nahi kudh se textnode create karke list mein append kar diya
+        document.querySelector('.language').appendChild(li)
+    }
+    addOptimizedLanuage("Python")
+    addOptimizedLanuage("Java")
+    addOptimizedLanuage("C")
+
+    // edit
+    const secondLang = document.querySelector('li:nth-child(2)')
+    console.info(secondLang)
+    // secondLang.innerHTML = "Mojo" - not bad 
+    // - recommended the optimized one
+    const newLi = document.createElement('li')
+    newLi.textContent = 'Mojo'
+    secondLang.replaceWith(newLi)
+
+   // edit
+   const firstLang = document.querySelector('li:first-child')
+   firstLang.outerHTML = '<li>Typescript</li>'
+
+   // remove
+   const lastLang = document.querySelector('li:last-child')
+   lastLang.remove()
+</script>
+
+</html>

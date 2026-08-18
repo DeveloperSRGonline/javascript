@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            background-color: #09090b;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 40px 20px;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width:580px;
+            background-color: #141418;
+            border: 1px solid #272730;
+            border-radius: 16px;
+            padding: 32px 28px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Header */
+        .app-header {
+            margin-bottom: 24px;
+        }
+
+        .app-header h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .app-header p {
+            font-size: 14px;
+            color: #94a3b8;
+            line-height: 1.5;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            align-items: flex-end;
+            gap: 14px;
+        }
+
+        .input-group {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        label {
+            font-size: 14px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .input-box {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            height: 48px;
+            background-color: #1e1e26;
+            color: #ffffff;
+            border: 1px solid #333340;
+            border-radius: 10px;
+            padding: 0 54px 0 14px;
+            font-size: 15px;
+            font-weight: 600;
+            outline: none;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input[type="number"]::placeholder {
+            color: #64748b;
+            font-weight: 400;
+            font-size: 14px;
+        }
+
+        input[type="number"]:focus {
+            border-color: #38bdf8;
+            box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.2);
+            background-color: #22222d;
+        }
+
+        /* Remove arrows from number input */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
+        .unit-tag {
+            position: absolute;
+            right: 12px;
+            color: #94a3b8;
+            font-size: 13px;
+            font-weight: 600;
+            pointer-events: none;
+        }
+
+        /* Submit button aligned with inputs */
+        button[type="submit"] {
+            height: 48px;
+            background-color: #ffffff;
+            color: #09090b;
+            border: none;
+            border-radius: 10px;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-1px);
+        }
+
+        button[type="submit"]:active {
+            transform: translateY(0);
+        }
+
+        /* Result Section - Well-distanced & Distinct */
+        #results {
+            margin-top: 24px;
+            display: none;
+        }
+
+        #results.show {
+            display: block;
+            background-color: #1c1c24;
+            border: 1px solid #2e2e3c;
+            border-radius: 12px;
+            padding: 18px 20px;
+            text-align: center;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(6px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #94a3b8;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 4px;
+        }
+
+        .result-score {
+            font-size: 36px;
+            font-weight: 800;
+            color: #ffffff;
+            line-height: 1.1;
+            margin-bottom: 10px;
+        }
+
+        .result-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .badge-underweight {
+            background-color: rgba(234, 179, 8, 0.15);
+            color: #fde047;
+            border: 1px solid rgba(234, 179, 8, 0.35);
+        }
+
+        .badge-normal {
+            background-color: rgba(34, 197, 94, 0.15);
+            color: #4ade80;
+            border: 1px solid rgba(34, 197, 94, 0.35);
+        }
+
+        .badge-overweight {
+            background-color: rgba(249, 115, 22, 0.15);
+            color: #fb923c;
+            border: 1px solid rgba(249, 115, 22, 0.35);
+        }
+
+        .badge-obese {
+            background-color: rgba(239, 68, 68, 0.15);
+            color: #f87171;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+        }
+
+        .error-message {
+            color: #f87171;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        /* Simple Details / Guide for New Users */
+        .info-guide {
+            margin-top: 28px;
+            padding-top: 22px;
+            border-top: 1px solid #272730;
+        }
+
+        .info-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 8px;
+        }
+
+        .info-desc {
+            font-size: 13px;
+            color: #94a3b8;
+            line-height: 1.5;
+            margin-bottom: 14px;
+        }
+
+        .category-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .category-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #1a1a22;
+            padding: 10px 14px;
+            border-radius: 8px;
+            font-size: 13px;
+            border: 1px solid #252530;
+        }
+
+        .category-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+
+        .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+
+        .dot-under { background-color: #eab308; }
+        .dot-normal { background-color: #22c55e; }
+        .dot-over { background-color: #f97316; }
+        .dot-obese { background-color: #ef4444; }
+
+        .category-range {
+            color: #94a3b8;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="app-header">
+            <h1>BMI Calculator</h1>
+            <p>Enter your height and weight below to calculate your Body Mass Index (BMI).</p>
+        </div>
+
+        <!-- 2-Input Simple Form -->
+        <form id="bmi-form">
+            <div class="input-group">
+                <label for="height">Height</label>
+                <div class="input-box">
+                    <input type="number" id="height" placeholder="e.g. 175 or 1.75" step="any" >
+                    <span class="unit-tag">cm / m</span>
+                </div>
+            </div>
+
+            <div class="input-group">
+                <label for="weight">Weight</label>
+                <div class="input-box">
+                    <input type="number" id="weight" placeholder="e.g. 70" step="any">
+                    <span class="unit-tag">kg</span>
+                </div>
+            </div>
+
+            <button type="submit">Calculate BMI</button>
+        </form>
+
+        <!-- Properly Distanced & Clear Result -->
+        <div id="results"></div>
+
+        <!-- Simple Guide for New Users -->
+        <div class="info-guide">
+            <div class="info-title">What is BMI?</div>
+            <div class="info-desc">
+                BMI (Body Mass Index) is a simple health screening number calculated from your weight and height to tell if your weight is in a healthy range.
+            </div>
+
+            <div class="category-list">
+                <div class="category-row">
+                    <span class="category-name">
+                        <span class="dot dot-under"></span> Underweight
+                    </span>
+                    <span class="category-range">Less than 18.5</span>
+                </div>
+
+                <div class="category-row">
+                    <span class="category-name">
+                        <span class="dot dot-normal"></span> Normal Weight
+                    </span>
+                    <span class="category-range">18.5 – 24.9</span>
+                </div>
+
+                <div class="category-row">
+                    <span class="category-name">
+                        <span class="dot dot-over"></span> Overweight
+                    </span>
+                    <span class="category-range">25.0 – 29.9</span>
+                </div>
+
+                <div class="category-row">
+                    <span class="category-name">
+                        <span class="dot dot-obese"></span> Obesity
+                    </span>
+                    <span class="category-range">30.0 or greater</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #222;
+            color: #fff;
+            font-family: sans-serif;
+            transition: background-color 0.3s ease;
+        }
+
+        .canvas {
+            width: 100%;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .button {
+            width: 100px;
+            height: 100px;
+            margin: 10px;
+            display: inline-block;
+            cursor: pointer;
+            border: 2px solid #fff;
+            border-radius: 8px;
+        }
+
+        #grey {
+            background-color: grey;
+        }
+        #white {
+            background-color: white;
+        }
+        #blue {
+            background-color: blue;
+        }
+        #yellow {
+            background-color: yellow;
+        }
+        #green {
+            background-color: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="canvas">
+        <h1>Color Scheme Switcher</h1>
+        <span class="button" id="grey"></span>
+        <span class="button" id="white"></span>
+        <span class="button" id="blue"></span>
+        <span class="button" id="yellow"></span>
+        <span class="button" id="green"></span>
+        <h2>Try clicking on one of the colors above to change the background color of the page</h2>
+    </div>
+</body>
+<script src="script.js"></script>
+
+</html>

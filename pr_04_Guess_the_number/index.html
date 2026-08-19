@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the Number</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #0f1117;
+            color: #e2e8f0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        #wrapper {
+            background: #181b23;
+            border: 1px solid #282d3d;
+            border-radius: 16px;
+            padding: 32px 28px;
+            max-width: 440px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        p {
+            color: #94a3b8;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .form {
+            margin: 24px 0 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .form label {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #cbd5e1;
+        }
+
+        .guessField {
+            width: 100%;
+            max-width: 220px;
+            padding: 10px 14px;
+            font-size: 1.1rem;
+            text-align: center;
+            color: #ffffff;
+            background: #0f1117;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .guessField:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+        }
+
+        /* Hide default number arrows for clean appearance */
+        .guessField::-webkit-outer-spin-button,
+        .guessField::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .guessField[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .submit {
+            padding: 10px 24px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #ffffff;
+            background: #4f46e5;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+        }
+
+        .submit:hover {
+            background: #4338ca;
+        }
+
+        .submit:active {
+            transform: scale(0.98);
+        }
+
+        .resultparas {
+            margin-top: 20px;
+            padding-top: 16px;
+            border-top: 1px solid #282d3d;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .resultparas p {
+            color: #94a3b8;
+        }
+
+        .guesses,
+        .remaining {
+            color: #f1f5f9;
+            font-weight: 600;
+        }
+
+        .message {
+            margin-top: 8px;
+            font-weight: 500;
+            min-height: 24px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper">
+        <h1>Guess the Number Game</h1>
+        <p>Try and guess the random number between 1 to 100</p>
+        <p>you have 10 attempts to guess the right number</p>
+        <br>
+        <form class="form">
+            <label for="guessField">Guess the number</label>
+            <input type="number" id="guessField" name="guessField" class="guessField">
+            <input type="submit" id="submit" name="submit" value="Submit" class="submit">
+        </form>
+        <div class="resultparas">
+            <p>Previous guesses: <span class="guesses"></span></p>
+            <p>guesses Remaining: <span class="remaining"></span></p>
+            <p class="message"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>

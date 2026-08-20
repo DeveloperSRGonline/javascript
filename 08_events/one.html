@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #222; color:white">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="200px" id="photoshop"
+                    src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="photoshop"></li>
+            <li><img width="200px" id="japan"
+                    src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="japan"></li>
+            <li><img width="200px" id="river"
+                    src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="river"></li>
+            <li><img width="200px" id="owl"
+                    src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="owl"></li>
+            <li><img width="200px" id="prayer"
+                    src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="prayer"></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+    // onclick lagane par bohat jyada information nahi milti - propogation ki ability nahi milti 
+    // document.getElementById('owl').onclick = function(){
+    //     alert('Owl Image')
+    // }
+    // attachEvent()
+    // jquery - on()
+
+    // type,timestamp,defaultPrevented
+    // target,toElement,srcElement,currentTarget,
+    // clietX,clientY,screenY,screenY
+    // altKey,ctrl,shiftKey,keyCode
+
+    // document.getElementById('images').addEventListener('click',function(e){
+    //     console.log('Clicked inside the ul')
+    // },false)
+
+    // document.getElementById('owl').addEventListener('click',function(e){
+    //     console.log('Owl clicked')
+    //     e.stopPropagation()// event propogation nahi hoga 
+    // },false)// when true then capturing top first the bottom and if false then first (bottom) chile element then top (parent)
+
+    // // event bubbling - child to parent - down to top
+    // // event capturing
+
+    // document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault()// default action ko prevent karta hai 
+    //     e.stopPropagation()
+    //     console.log('Google clicked')
+    // },false)
+
+    // one real world scenario want to delete image when click on that spedific element
+
+    document.querySelector('#images').addEventListener('click', function (e) {
+        let removeIt = e.target.parentNode
+        // console.log(e.target)
+        if(e.target.tagName === 'IMG'){// when event spill over ho raha that jab galat jagah click kar rahe the isko prevent karne ke liye hum ne strict check lagaya
+            removeIt.remove()
+        }
+    })
+    
+// removeIt.parentNode.removeChild(removeIt)
+</script>
+
+</html>

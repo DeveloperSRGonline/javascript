@@ -1,0 +1,21 @@
+javascript
+- synchronous
+- single threaded
+
+Each operation wwaits sfor the last one to complete before executing
+
+execution context
+ -execute one line of code at a time
+ - console.log - 1
+ - console.log - 2
+
+ [call stack]             [memory heap]
+
+blocking code
+block the flow of program 
+read file syn
+
+
+non blocking code
+does not block execution
+read file async

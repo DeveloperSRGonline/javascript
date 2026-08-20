@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Javascript</title>
+</head>
+<body>
+    <h1>Async Javascript</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const sayDate =  function(str){
+        console.log(`${str} :  ${new Date().toLocaleTimeString()}`)
+    }
+
+    const intervalId = setInterval(sayDate,5000,"Hi")
+    clearInterval(intervalId)
+</script>
+</html>

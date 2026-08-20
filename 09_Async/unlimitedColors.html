@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Unlimited Colors</h1>
+    <button id="start">Start</button>
+    <button id="stop">Stop</button>
+</body>
+<script>
+
+    // // console.log(randomColor)
+
+    // const startButton = document.querySelector('#start')
+    // const stopButton = document.querySelector('#stop')
+
+    // let intervalId = null
+
+    // startButton.addEventListener('click', function () {
+
+    //     if (intervalId !== null) {
+    //         return
+    //     }
+    //     intervalId = setInterval(function () {
+    //         const randomColor = `#` + Math.floor(Math.random() * 16777215).toString(16).padStart(6, "0")
+    //         document.body.style.backgroundColor = randomColor
+    //     }, 1000)
+    // })
+    // stopButton.addEventListener('click', function () {
+    //     clearInterval(intervalId)
+    //     intervalId = null
+    //     console.log("Stopped")
+    // })
+
+    // another way
+    const randomColor = function () {
+        const hex = "0123456789ABCDEF"
+        let color = '#'
+        for (let i = 0; i < 6; i++) {
+            color += hex[Math.floor(Math.random() * 16)]
+        }
+        return color
+    }
+    let intervalId = null
+    const startChangingColor = function () {
+
+        if (intervalId !== null) {// checking edge case
+            return
+        }
+        intervalId = setInterval(changeBgColor, 1000)
+
+        function changeBgColor() {
+            document.body.style.backgroundColor = randomColor()
+        }
+    }
+    const stopChangingColor = function () {
+        clearInterval(intervalId)
+        intervalId = null// saving memory
+    }
+
+    document.querySelector('#start').addEventListener('click', function () {
+        startChangingColor()
+    })
+
+    document.querySelector('#stop').addEventListener('click', function () {
+        stopChangingColor()
+    })
+
+
+</script>
+
+</html>

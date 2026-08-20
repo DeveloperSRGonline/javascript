@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1b1b1b;
+        }
+        .profile-card{
+            height: 200px;
+            width: 250px;
+            border-radius: 20px;
+            border: 2px solid rgb(107, 144, 255);
+            background-color: #373737;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 0 auto;
+        }
+        .profile-card img{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+        .profile-card h1{
+            font-size: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <img src="" alt="">
+        <h1></h1>
+    </div>
+</body>
+<script>
+    const requestURL = 'https://api.github.com/users/iteratesrg';
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET",requestURL); // continus track nahiho rahi thi
+    xhr.onreadystatechange = function(){
+        if(xhr.readyState === 4){
+            const data = JSON.parse(this.responseText);
+            // console.log(data.avatar_url,data.name)
+            const profileUrl = data.avatar_url;
+            const name = data.name;
+            const img = document.querySelector('img')
+            img.src = profileUrl
+            const h1 = document.querySelector('h1')
+            h1.textContent = name
+            const div = document.querySelector('.card')
+            div.className = 'profile-card'
+            div.appendChild(img)
+            div.appendChild(h1)
+            document.body.appendChild(div)
+        }
+    }
+    xhr.send()
+</script>
+</html>
